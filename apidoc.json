@@ -1,0 +1,7 @@
+{
+  "name": "NoMoreHomeless",
+  "version": "1.0.0",
+  "description": "Api server for app NoMoreHomeless",
+  "title": "NoMoreHomeless documentation",
+  "url" : "localhost:3000"
+}
