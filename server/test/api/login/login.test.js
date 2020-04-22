@@ -58,7 +58,7 @@ describe('Login', () => {
 
         expect(res).to.have.equal(400);
 
-        expect(res.body.isLogged).to.have.equal(false);
+        expect(res.body.isLogged).to.have.equal(true);
         done();
       })
   });

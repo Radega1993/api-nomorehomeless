@@ -76,6 +76,7 @@ describe('Usuario', () => {
         expect(usuario.apellido).to.be.equal('elmio');
         expect(usuario.email).to.be.equal('testemail@elmio.com');
         expect(usuario.role).to.be.equal('USER_ROLE');
+        expect(usuario.password).to.be.equal('123456');
         done();
       })
   });
