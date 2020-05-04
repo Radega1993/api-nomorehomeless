@@ -390,7 +390,7 @@ app.post('/producto',  (req, res) => {
  *     {
  *     "ok": false,
  *     "err": {
- *         "message": "producto no guardado"
+ *         "message": "El producto no existe"
  *     }
  * }
  */

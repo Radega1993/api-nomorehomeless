@@ -19,12 +19,12 @@ const app = express();
  *     HTTP/1.1 200 OK
  *
  *
- * @apiError UserNotFound The image was not found.
+ * @apiError ImageNotFound The image was not found.
  *
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 200 OK
  *     {
- *       "swow default image"
+ *       "show default image"
  *     }
  */
 app.get('/imagen/:tipo/:img', (req, res) => {

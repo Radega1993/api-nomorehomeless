@@ -27,7 +27,7 @@ const app = express();
  *       ]
  *     }
  *
- * @apiError UserNotFound The id of the User was not found.
+ * @apiError CategoriaNotFound The id of the Category was not found.
  *
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 400 Not Found
@@ -82,14 +82,14 @@ app.get('/categoria', (req, res) => {
  *        }
  *     }
  *
- * @apiError UserNotCreated The User was not created.
+ * @apiError CategoryNotCreated The Category was not created.
  *
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 400 Not Found
  *     {
  *     "ok": false,
  *     "err": {
- *         "message": "usuario no guardado"
+ *         "message": "Categoria no guardada"
  *     }
  * }
  */

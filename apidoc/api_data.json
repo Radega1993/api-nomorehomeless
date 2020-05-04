@@ -149,8 +149,8 @@
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "UserNotFound",
-            "description": "<p>The id of the User was not found.</p>"
+            "field": "CategoriaNotFound",
+            "description": "<p>The id of the Category was not found.</p>"
           }
         ]
       },
@@ -239,15 +239,15 @@
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "UserNotCreated",
-            "description": "<p>The User was not created.</p>"
+            "field": "CategoryNotCreated",
+            "description": "<p>The Category was not created.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "    HTTP/1.1 400 Not Found\n    {\n    \"ok\": false,\n    \"err\": {\n        \"message\": \"usuario no guardado\"\n    }\n}",
+          "content": "    HTTP/1.1 400 Not Found\n    {\n    \"ok\": false,\n    \"err\": {\n        \"message\": \"Categoria no guardada\"\n    }\n}",
           "type": "json"
         }
       ]
@@ -412,7 +412,7 @@
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "UserNotFound",
+            "field": "ImageNotFound",
             "description": "<p>The image was not found.</p>"
           }
         ]
@@ -420,7 +420,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"swow default image\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"show default image\"\n}",
           "type": "json"
         }
       ]
@@ -549,7 +549,7 @@
   },
   {
     "type": "post",
-    "url": "/login",
+    "url": "/logout",
     "title": "Logout User",
     "name": "PostLogout",
     "group": "Logout",
@@ -1449,7 +1449,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "    HTTP/1.1 400 Not Found\n    {\n    \"ok\": false,\n    \"err\": {\n        \"message\": \"producto no guardado\"\n    }\n}",
+          "content": "    HTTP/1.1 400 Not Found\n    {\n    \"ok\": false,\n    \"err\": {\n        \"message\": \"El producto no existe\"\n    }\n}",
           "type": "json"
         }
       ]

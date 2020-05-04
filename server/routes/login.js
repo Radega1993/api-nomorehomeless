@@ -106,7 +106,7 @@ app.post('/login', (req, res) => {
 
 
 /**
- * @api {post} /login Logout User
+ * @api {post} /logout Logout User
  * @apiName PostLogout
  * @apiGroup Logout
  *
