@@ -18,7 +18,7 @@ var productoSchema = new Schema({
   nombre: {
     type: String,
     minlength: [2, 'El nombre debe contener al menos 2 caracteres!'],
-    maxlength: [15, 'El nombre debe contener menos de 15 caracteres!'],
+    maxlength: [100, 'El nombre debe contener menos de 15 caracteres!'],
     required: [true, 'El nombre es necesario']
   },
   descripcion: {
