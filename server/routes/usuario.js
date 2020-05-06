@@ -64,6 +64,7 @@ app.get('/usuario', (req, res) => {
         return res.status(400).json({
           ok: false,
           err: {
+            err,
             message: 'usuarios no encontrados'
           }
         });
@@ -131,6 +132,7 @@ app.get('/usuario/:id', (req, res) => {
         return res.status(500).json({
           ok: false,
           err: {
+            err,
             message: 'usuario no encontrado'
           }
         });
@@ -140,6 +142,7 @@ app.get('/usuario/:id', (req, res) => {
         return res.status(400).json({
           ok: false,
           err: {
+            err,
             message: "El usuario no existe. "
           }
         });
@@ -222,6 +225,7 @@ app.post('/usuario', verificaContraseña, (req, res) => {
       return res.status(400).json({
         ok: false,
         err: {
+          err,
           message: 'Usuario no guardado'
         }
       });
@@ -381,6 +385,7 @@ app.delete('/usuario/:id', (req, res) => {
       return res.status(400).json({
         ok: false,
         err: {
+          err,
           message: 'usuario no encontrado'
         }
       });

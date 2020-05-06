@@ -203,6 +203,7 @@ app.get('/evento/:id', (req, res) => {
         return res.status(400).json({
           ok: false,
           err: {
+            err,
             message: "El evento no existe. "
           }
         });
@@ -285,6 +286,7 @@ app.post('/evento',  (req, res) => {
       return res.status(400).json({
         ok: false,
         err: {
+          err,
           message: 'evento no guardado'
         }
       });
@@ -381,6 +383,7 @@ app.put('/evento/:id', (req, res) => {
       return res.status(400).json({
         ok: false,
         err: {
+          err,
           message: 'El evento no existe.'
         }
       });
@@ -459,6 +462,7 @@ app.delete('/evento/:id', (req, res) => {
       return res.status(400).json({
         ok: false,
         err: {
+          err,
           message: 'Evento no encontrado.'
         }
       });

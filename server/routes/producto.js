@@ -322,6 +322,7 @@ app.post('/producto',  (req, res) => {
       return res.status(400).json({
         ok: false,
         err: {
+          err,
           message: 'producto no guardado'
         }
       });

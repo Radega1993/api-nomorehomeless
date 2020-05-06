@@ -112,6 +112,7 @@ app.get('/categoria/buscar/:nombre', (req, res) => {
         return res.status(400).json({
           ok: false,
           err: {
+            err,
             message: "La categoria no existe. "
           }
         });
@@ -247,6 +248,7 @@ app.put('/categoria/:id', (req, res) => {
       return res.status(400).json({
         ok: false,
         err: {
+          err,
           message: 'La categoria no existe'
         }
       });
@@ -318,6 +320,7 @@ app.delete('/categoria/:id', /* verificaAdminRole, */ (req, res) => {
       return res.status(400).json({
         ok: false,
         err: {
+          err,
           message: 'categoria no encontrada'
         }
       });
