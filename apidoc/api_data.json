@@ -167,6 +167,89 @@
     "groupTitle": "Categoria"
   },
   {
+    "type": "get",
+    "url": "/categoria/buscar/:nombre",
+    "title": "Request category information by name",
+    "name": "GetCategoriaNombre",
+    "group": "Categoria",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "nombre",
+            "description": "<p>Name of the Category.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "ok",
+            "description": "<p>Result of the query.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>Identifier of the Category.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nombre",
+            "description": "<p>Name of the Category.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "descripcion",
+            "description": "<p>Description of the Category.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"categorias\": {\n    \"_id\": \"5e77a97e662f4d75dcc174d9\",\n    \"nombre\": \"consigna\",\n    \"descripcion\": \"lugares para guardar tus objetos\",\n    \"__v\": 0\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ProductNotFound",
+            "description": "<p>The products was not found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "    HTTP/1.1 400 Not Found\n    {\n    \"ok\": false,\n    \"err\": {\n        \"message\": \"producto no encontrado\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "server/routes/categoria.js",
+    "groupTitle": "Categoria"
+  },
+  {
     "type": "post",
     "url": "/categoria",
     "title": "Create Category",
@@ -352,6 +435,764 @@
     "version": "0.0.0",
     "filename": "server/routes/categoria.js",
     "groupTitle": "Categoria"
+  },
+  {
+    "type": "delete",
+    "url": "/evento/:id",
+    "title": "Delete Event",
+    "name": "DeleteEvento",
+    "group": "Evento",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Event unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "ok",
+            "description": "<p>Result of the query.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID of event of the system.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nombre",
+            "description": "<p>Name of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "descripcion",
+            "description": "<p>Description of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "direccion",
+            "description": "<p>Address of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "Coord",
+            "description": "<p>Coordenades of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "horario",
+            "description": "<p>Times of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Fecha",
+            "description": "<p>data of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "homeless",
+            "description": "<p>is homeless from event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "isDone",
+            "description": "<p>The event is done or not.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"evento\": {\n       \"homeless\": true,\n       \"isDone\": false,\n       \"_id\": \"5eb27b7fe7ce984b5b243a5a\",\n       \"nombre\": \"Mi evento\",\n       \"descripcion\": \"este es el mejor evento\",\n       \"direccion\": \"C/ no lo se\",\n       \"horario\": \"de 10:00 a 11:25\",\n       \"fecha\": \"2020-10-01T00:00:00.000Z\"\n   },\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "EventoNotDelete",
+            "description": "<p>The Event was not deleted.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "    HTTP/1.1 400 Not Found\n    {\n    \"ok\": false,\n    \"err\": {\n        \"message\": \"evento no encontrado\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "server/routes/evento.js",
+    "groupTitle": "Evento"
+  },
+  {
+    "type": "get",
+    "url": "/eventos/buscar/:nombre",
+    "title": "Request event information by name",
+    "name": "GetEventNombre",
+    "group": "Evento",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "nombre",
+            "description": "<p>Name of the Event.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "ok",
+            "description": "<p>Result of the query.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID of event of the system.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nombre",
+            "description": "<p>Name of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "descripcion",
+            "description": "<p>Description of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "direccion",
+            "description": "<p>Address of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "Coord",
+            "description": "<p>Coordenades of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "horario",
+            "description": "<p>Times of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Fecha",
+            "description": "<p>data of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "homeless",
+            "description": "<p>is homeless from event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "isDone",
+            "description": "<p>The event is done or not.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"evento\": {\n       \"homeless\": true,\n       \"isDone\": false,\n       \"_id\": \"5eb27b7fe7ce984b5b243a5a\",\n       \"nombre\": \"Mi evento\",\n       \"descripcion\": \"este es el mejor evento\",\n       \"direccion\": \"C/ no lo se\",\n       \"horario\": \"de 10:00 a 11:25\",\n       \"fecha\": \"2020-10-01T00:00:00.000Z\"\n   },\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "EventNotFound",
+            "description": "<p>The event was not found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "    HTTP/1.1 400 Not Found\n    {\n    \"ok\": false,\n    \"err\": {\n        \"message\": \"Evento no encontrado\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "server/routes/evento.js",
+    "groupTitle": "Evento"
+  },
+  {
+    "type": "get",
+    "url": "/evento",
+    "title": "Request all event information",
+    "name": "GetEvento",
+    "group": "Evento",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "ok",
+            "description": "<p>Result of the query.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String[]",
+            "optional": false,
+            "field": "Eventos",
+            "description": "<p>Events of the system.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"eventos\": [\n    {\n       \"homeless\": true,\n       \"isDone\": false,\n       \"_id\": \"5eb27b7fe7ce984b5b243a5a\",\n       \"nombre\": \"Mi evento\",\n       \"descripcion\": \"este es el mejor evento\",\n       \"direccion\": \"C/ no lo se\",\n       \"horario\": \"de 10:00 a 11:25\",\n       \"fecha\": \"2020-10-01T00:00:00.000Z\"\n    },\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "EventNotFound",
+            "description": "<p>The event was not found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "    HTTP/1.1 400 Not Found\n    {\n    \"ok\": false,\n    \"err\": {\n        \"message\": \"eventos no encontrados\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "server/routes/evento.js",
+    "groupTitle": "Evento"
+  },
+  {
+    "type": "get",
+    "url": "/evento/:id",
+    "title": "Request event information by id",
+    "name": "GetEventoId",
+    "group": "Evento",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID of the Event.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "ok",
+            "description": "<p>Result of the query.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID of event of the system.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nombre",
+            "description": "<p>Name of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "descripcion",
+            "description": "<p>Description of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "direccion",
+            "description": "<p>Address of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "Coord",
+            "description": "<p>Coordenades of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "horario",
+            "description": "<p>Times of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Fecha",
+            "description": "<p>data of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "homeless",
+            "description": "<p>is homeless from event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "isDone",
+            "description": "<p>The event is done or not.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"evento\": {\n       \"homeless\": true,\n       \"isDone\": false,\n       \"_id\": \"5eb27b7fe7ce984b5b243a5a\",\n       \"nombre\": \"Mi evento\",\n       \"descripcion\": \"este es el mejor evento\",\n       \"direccion\": \"C/ no lo se\",\n       \"horario\": \"de 10:00 a 11:25\",\n       \"fecha\": \"2020-10-01T00:00:00.000Z\"\n   },\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "EventoNotFound",
+            "description": "<p>The event was not found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "    HTTP/1.1 400 Not Found\n    {\n    \"ok\": false,\n    \"err\": {\n        \"message\": \"Evento no encontrado\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "server/routes/evento.js",
+    "groupTitle": "Evento"
+  },
+  {
+    "type": "post",
+    "url": "/evento",
+    "title": "Create event",
+    "name": "PostEvento",
+    "group": "Evento",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "nombre",
+            "description": "<p>Name of event.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "descripcion",
+            "description": "<p>Description of the event.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "direccion",
+            "description": "<p>Address of event.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "horario",
+            "description": "<p>Times of the event.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "Fecha",
+            "description": "<p>data of the event.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": false,
+            "field": "homeless",
+            "description": "<p>is homeless from event.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "ok",
+            "description": "<p>Result of the query.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID of event of the system.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nombre",
+            "description": "<p>Name of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "descripcion",
+            "description": "<p>Description of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "direccion",
+            "description": "<p>Address of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "Coord",
+            "description": "<p>Coordenades of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "horario",
+            "description": "<p>Times of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Fecha",
+            "description": "<p>data of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "homeless",
+            "description": "<p>is homeless from event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "isDone",
+            "description": "<p>The event is done or not.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"evento\": {\n       \"homeless\": true,\n       \"isDone\": false,\n       \"_id\": \"5eb27b7fe7ce984b5b243a5a\",\n       \"nombre\": \"Mi evento\",\n       \"descripcion\": \"este es el mejor evento\",\n       \"direccion\": \"C/ no lo se\",\n       \"horario\": \"de 10:00 a 11:25\",\n       \"fecha\": \"2020-10-01T00:00:00.000Z\"\n   },\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "EventNotCreated",
+            "description": "<p>The Event was not created.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "    HTTP/1.1 400 Not Found\n    {\n    \"ok\": false,\n    \"err\": {\n        \"message\": \"evento no guardado\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "server/routes/evento.js",
+    "groupTitle": "Evento"
+  },
+  {
+    "type": "put",
+    "url": "/event/:id",
+    "title": "Update event",
+    "name": "PutEvento",
+    "group": "Evento",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Category unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "nombre",
+            "description": "<p>Name of event.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "descripcion",
+            "description": "<p>Description of the event.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "direccion",
+            "description": "<p>Address of event.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "horario",
+            "description": "<p>Times of the event.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "Fecha",
+            "description": "<p>data of the event.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": true,
+            "field": "homeless",
+            "description": "<p>is homeless from event.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "ok",
+            "description": "<p>Result of the query.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID of event of the system.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nombre",
+            "description": "<p>Name of events.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "descripcion",
+            "description": "<p>Description of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "direccion",
+            "description": "<p>Address of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "Coord",
+            "description": "<p>Coordenades of event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "horario",
+            "description": "<p>Times of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Fecha",
+            "description": "<p>data of the event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "homeless",
+            "description": "<p>is homeless from event.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "isDone",
+            "description": "<p>The event is done or not.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"evento\": {\n       \"homeless\": true,\n       \"isDone\": false,\n       \"_id\": \"5eb27b7fe7ce984b5b243a5a\",\n       \"nombre\": \"Mi evento\",\n       \"descripcion\": \"este es el mejor evento\",\n       \"direccion\": \"C/ no lo se\",\n       \"horario\": \"de 10:00 a 11:25\",\n       \"fecha\": \"2020-10-01T00:00:00.000Z\"\n   },\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "eventNotModify",
+            "description": "<p>The Event was not updated.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "    HTTP/1.1 400 Not Found\n    {\n    \"ok\": false,\n    \"err\": {\n        \"message\": \"El evento no existe\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "server/routes/evento.js",
+    "groupTitle": "Evento"
   },
   {
     "type": "get",
@@ -848,8 +1689,8 @@
   },
   {
     "type": "get",
-    "url": "/producto/buscar/:id",
-    "title": "Request products information by name",
+    "url": "/producto/:id",
+    "title": "Request products information by id",
     "name": "GetProductoId",
     "group": "Producto",
     "parameter": {
@@ -1460,6 +2301,45 @@
   },
   {
     "type": "get",
+    "url": "/",
+    "title": "Welcome Page",
+    "name": "Wellcome",
+    "group": "Server",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "/",
+            "description": "<p>Recive wellcome message from server!.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "server/server.js",
+    "groupTitle": "Server"
+  },
+  {
+    "type": "get",
     "url": "/ping",
     "title": "Request server conectivity",
     "name": "ping",
@@ -1692,6 +2572,13 @@
           },
           {
             "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "fecha",
+            "description": "<p>Birth of the User.</p>"
+          },
+          {
+            "group": "Success 200",
             "type": "String",
             "optional": false,
             "field": "email",
@@ -1702,7 +2589,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"usuario\": {\n    \"role\": \"USER_ROLE\",\n    \"homeless\": false,\n    \"isLogged\": false,\n    \"_id\": \"5e831411e2c1d331f82c244d\",\n    \"nombre\": \"testmod\",\n    \"apellido\": \"elmio\",\n    \"email\": \"testdoc@emlio.com\",\n    \"__v\": 0\n  }\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"usuario\": {\n    \"role\": \"USER_ROLE\",\n    \"homeless\": false,\n    \"isLogged\": false,\n    \"_id\": \"5e831411e2c1d331f82c244d\",\n    \"nombre\": \"testmod\",\n    \"apellido\": \"elmio\",\n    \"fecha\": \"1987-10-19\"\n    \"email\": \"testdoc@emlio.com\",\n    \"__v\": 0\n  }\n}",
           "type": "json"
         }
       ]
@@ -1758,7 +2645,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"usuarios\":[\n  {\n     \"role\": \"USER_ROLE\",\n     \"homeless\": false,\n     \"_id\": \"5e7bb2a5e2f78255fbdeccb5\",\n     \"nombre\": \"test\",\n     \"apellido\": \"elmio\",\n     \"email\": \"testvalidacion@emlio.com\"\n    }\n  ],\n  \"total\": 2\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"usuarios\":[\n  {\n     \"role\": \"USER_ROLE\",\n     \"homeless\": false,\n     \"_id\": \"5e7bb2a5e2f78255fbdeccb5\",\n     \"nombre\": \"test\",\n     \"apellido\": \"elmio\",\n        \"fecha\": \"1987-10-19\"\n     \"email\": \"testvalidacion@emlio.com\"\n    }\n  ],\n  \"total\": 2\n}",
           "type": "json"
         }
       ]
@@ -1852,6 +2739,13 @@
           },
           {
             "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "fecha",
+            "description": "<p>Birth of the User.</p>"
+          },
+          {
+            "group": "Success 200",
             "type": "String",
             "optional": false,
             "field": "email",
@@ -1933,6 +2827,13 @@
             "optional": false,
             "field": "passwordVerification",
             "description": "<p>Repeat password of the User.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Date",
+            "optional": false,
+            "field": "fecha",
+            "description": "<p>Birth of the User.</p>"
           }
         ]
       }
@@ -1991,6 +2892,13 @@
           },
           {
             "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "fecha",
+            "description": "<p>Birth of the User.</p>"
+          },
+          {
+            "group": "Success 200",
             "type": "String",
             "optional": false,
             "field": "email",
@@ -2001,7 +2909,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"usuario\": {\n    \"role\": \"USER_ROLE\",\n    \"homeless\": false,\n    \"isLogged\": false,\n    \"_id\": \"5e831411e2c1d331f82c244d\",\n    \"nombre\": \"testdoc\",\n    \"apellido\": \"elmio\",\n    \"email\": \"testdoc@emlio.com\",\n    \"__v\": 0\n  }\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"usuario\": {\n    \"role\": \"USER_ROLE\",\n    \"homeless\": false,\n    \"isLogged\": false,\n    \"_id\": \"5e831411e2c1d331f82c244d\",\n    \"nombre\": \"testdoc\",\n    \"apellido\": \"elmio\",\n    \"fecha\": \"1987-10-19\"\n    \"email\": \"testdoc@emlio.com\",\n    \"__v\": 0\n  }\n}",
           "type": "json"
         }
       ]
@@ -2123,6 +3031,13 @@
           },
           {
             "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "fecha",
+            "description": "<p>Birth of the User.</p>"
+          },
+          {
+            "group": "Success 200",
             "type": "String",
             "optional": false,
             "field": "email",
@@ -2133,7 +3048,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"usuario\": {\n    \"role\": \"USER_ROLE\",\n    \"homeless\": false,\n    \"isLogged\": false,\n    \"_id\": \"5e831411e2c1d331f82c244d\",\n    \"nombre\": \"testmod\",\n    \"apellido\": \"elmio\",\n    \"email\": \"testdoc@emlio.com\",\n    \"__v\": 0\n  }\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"usuario\": {\n    \"role\": \"USER_ROLE\",\n    \"homeless\": false,\n    \"isLogged\": false,\n    \"_id\": \"5e831411e2c1d331f82c244d\",\n    \"nombre\": \"testmod\",\n    \"apellido\": \"elmio\",\n    \"fecha\": \"1987-10-19\"\n    \"email\": \"testdoc@emlio.com\",\n    \"__v\": 0\n  }\n}",
           "type": "json"
         }
       ]

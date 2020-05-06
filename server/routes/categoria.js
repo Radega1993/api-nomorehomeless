@@ -58,6 +58,72 @@ app.get('/categoria', (req, res) => {
 });
 
 /**
+ * @api {get} /categoria/buscar/:nombre Request category information by name
+ * @apiName GetCategoriaNombre
+ * @apiGroup Categoria
+ *
+ * @apiParam {String} nombre Name of the Category.
+ *
+ * @apiSuccess {Boolean} ok Result of the query.
+ * @apiSuccess {String} _id Identifier of the Category.
+ * @apiSuccess {String} nombre Name of the Category.
+ * @apiSuccess {String} descripcion Description of the Category.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "ok": true,
+ *       "categorias": {
+ *         "_id": "5e77a97e662f4d75dcc174d9",
+ *         "nombre": "consigna",
+ *         "descripcion": "lugares para guardar tus objetos",
+ *         "__v": 0
+ *         }
+ *     }
+ *
+ * @apiError ProductNotFound The products was not found.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 400 Not Found
+ *     {
+ *     "ok": false,
+ *     "err": {
+ *         "message": "producto no encontrado"
+ *     }
+ * }
+ */
+app.get('/categoria/buscar/:nombre', (req, res) => {
+
+  let nombre = req.params.nombre;
+  let regex = new RegExp(nombre, 'i');
+
+  Categoria.find({
+      nombre: regex
+    })
+    .exec((err, categorias) => {
+
+      if (err) {
+        return res.status(500).json({
+          ok: false,
+          err
+        });
+      }
+      if (!categorias) {
+        return res.status(400).json({
+          ok: false,
+          err: {
+            message: "La categoria no existe. "
+          }
+        });
+      }
+      res.json({
+        ok: true,
+        categorias
+      });
+    });
+});
+
+/**
  * @api {post} /categoria Create Category
  * @apiName PostCategoria
  * @apiGroup Categoria

@@ -47,6 +47,10 @@ let usuarioSchema = new Schema({
     default: 'USER_ROLE',
     enum: rolesValidos
   },
+  fecha: {
+    type: Date,
+    required: [true, 'La fecha es necesaria']
+  },
   homeless: {
     type: Boolean,
     default: false

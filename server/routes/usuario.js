@@ -30,6 +30,7 @@ const app = express();
  *          "_id": "5e7bb2a5e2f78255fbdeccb5",
  *          "nombre": "test",
  *          "apellido": "elmio",
+            "fecha": "1987-10-19"
  *          "email": "testvalidacion@emlio.com"
  *         }
  *       ],
@@ -92,6 +93,7 @@ app.get('/usuario', (req, res) => {
  * @apiSuccess {String} _id Identifier of the User.
  * @apiSuccess {String} nombre Name of the User.
  * @apiSuccess {String} apellido Surname of the User.
+ * @apiSuccess {Date} fecha Birth of the User.
  * @apiSuccess {String} email Email of the User.
  *
  * @apiSuccessExample Success-Response:
@@ -160,6 +162,7 @@ app.get('/usuario/:id', (req, res) => {
  * @apiParam {String} email Email of the User.
  * @apiParam {String} password  Password of the User.
  * @apiParam {String} passwordVerification Repeat password of the User.
+ * @apiParam {Date}   fecha Birth of the User.
  *
  * @apiSuccess {Boolean} ok Result of the query.
  * @apiSuccess {String} role Role of the User.
@@ -168,6 +171,7 @@ app.get('/usuario/:id', (req, res) => {
  * @apiSuccess {String} _id Identifier of the User.
  * @apiSuccess {String} nombre Name of the User.
  * @apiSuccess {String} apellido Surname of the User.
+ * @apiSuccess {Date} fecha Birth of the User.
  * @apiSuccess {String} email Email of the User.
  *
  * @apiSuccessExample Success-Response:
@@ -181,6 +185,7 @@ app.get('/usuario/:id', (req, res) => {
  *         "_id": "5e831411e2c1d331f82c244d",
  *         "nombre": "testdoc",
  *         "apellido": "elmio",
+ *         "fecha": "1987-10-19"
  *         "email": "testdoc@emlio.com",
  *         "__v": 0
  *       }
@@ -207,7 +212,8 @@ app.post('/usuario', verificaContraseña, (req, res) => {
     apellido: body.apellido,
     email: body.email,
     password: bcrypt.hashSync(body.password, 10),
-    role: body.role
+    role: body.role,
+    fecha: body.fecha
   });
 
   usuario.save((err, usuarioDB) => {
@@ -245,6 +251,7 @@ app.post('/usuario', verificaContraseña, (req, res) => {
  * @apiSuccess {String} _id Identifier of the User.
  * @apiSuccess {String} nombre Name of the User.
  * @apiSuccess {String} apellido Surname of the User.
+ * @apiSuccess {Date} fecha Birth of the User.
  * @apiSuccess {String} email Email of the User.
  *
  * @apiSuccessExample Success-Response:
@@ -258,6 +265,7 @@ app.post('/usuario', verificaContraseña, (req, res) => {
  *         "_id": "5e831411e2c1d331f82c244d",
  *         "nombre": "testmod",
  *         "apellido": "elmio",
+ *         "fecha": "1987-10-19"
  *         "email": "testdoc@emlio.com",
  *         "__v": 0
  *       }
@@ -283,7 +291,9 @@ app.put('/usuario/:id', (req, res) => {
       'email',
       'img',
       'role',
-      'estado'
+      'fecha',
+      'homeless',
+      'isLogged'
     ]);
 
   Usuario.findByIdAndUpdate(id, body, {
@@ -320,6 +330,7 @@ app.put('/usuario/:id', (req, res) => {
  * @apiSuccess {String} _id Identifier of the User.
  * @apiSuccess {String} nombre Name of the User.
  * @apiSuccess {String} apellido Surname of the User.
+ * @apiSuccess {Date} fecha Birth of the User.
  * @apiSuccess {String} email Email of the User.
  *
  * @apiSuccessExample Success-Response:
@@ -333,6 +344,7 @@ app.put('/usuario/:id', (req, res) => {
  *         "_id": "5e831411e2c1d331f82c244d",
  *         "nombre": "testmod",
  *         "apellido": "elmio",
+ *         "fecha": "1987-10-19"
  *         "email": "testdoc@emlio.com",
  *         "__v": 0
  *       }

@@ -161,7 +161,7 @@ app.get('/producto/buscar/:nombre', (req, res) => {
 });
 
 /**
- * @api {get} /producto/buscar/:id Request products information by name
+ * @api {get} /producto/:id Request products information by id
  * @apiName GetProductoId
  * @apiGroup Producto
  *

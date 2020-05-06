@@ -16,6 +16,26 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 /**
+ * @api {get} / Welcome Page
+ * @apiName Wellcome
+ * @apiGroup Server
+ *
+ *
+ * @apiSuccess {String} / Recive wellcome message from server!.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+
+ */
+app.get('/', (req, res) => {
+  res.send('Api NoMoreHomeless!');
+});
+
+/**
  * @api {get} /ping Request server conectivity
  * @apiName ping
  * @apiGroup Server
