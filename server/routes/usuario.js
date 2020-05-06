@@ -213,7 +213,8 @@ app.post('/usuario', verificaContraseña, (req, res) => {
     email: body.email,
     password: bcrypt.hashSync(body.password, 10),
     role: body.role,
-    fecha: body.fecha
+    fecha: body.fecha,
+    homeless: body.homeless
   });
 
   usuario.save((err, usuarioDB) => {
