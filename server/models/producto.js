@@ -35,7 +35,7 @@ var productoSchema = new Schema({
   },
   telefono: {
     type: String,
-    match: [/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im, 'Introduce un telefono valido'],
+    maxlength: [15, 'El telefono debe contener menos de 15 caracteres!'],
     required: false
   },
   coord: {
