@@ -58,7 +58,7 @@ app.get('/producto', (req, res) => {
   Producto.find({})
     .sort('nombre')
     .skip(desde)
-    .limit(5)
+    //.limit(5)
     .populate('usuario', 'nombre apellido email')
     .populate('categoria', 'nombre')
     .exec((err, productos) => {
