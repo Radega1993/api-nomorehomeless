@@ -135,7 +135,13 @@ function imagenUsuario(id, res, nombreArchivo) {
     usuarioDB.img = nombreArchivo;
 
     usuarioDB.save((err, usuarioGuardado) => {
-
+      if (err) {
+        return res.status(500).json({
+          ok: false,
+          err
+        });
+      };
+      
       res.json({
         ok: true,
         usuario: usuarioGuardado,
@@ -176,11 +182,17 @@ function imagenProducto(id, res, nombreArchivo) {
 
     productoDB.img = nombreArchivo;
 
-    productoDB.save((err, productoGuardado) => {
+    productoDB.save((err, productoDB) => {
+      if (err) {
+        return res.status(500).json({
+          ok: false,
+          err
+        });
+      };
 
       res.json({
         ok: true,
-        producto: productoGuardado,
+        producto: productoDB,
         img: nombreArchivo
       });
 
