@@ -36,7 +36,7 @@ app.get('/imagen/:tipo/:img', (req, res) => {
   if (fs.existsSync(pathImagen)) {
     res.sendFile(pathImagen);
   } else {
-    let noImagePath = path.resolve(__dirname, '../assets/no.image.jpg');
+    let noImagePath = path.resolve(__dirname, '../assets/no-image.jpg');
     res.sendFile(noImagePath);
   }
 })
