@@ -1689,6 +1689,131 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/producto/categoria/:categoria",
+    "title": "Request products information by category",
+    "name": "GetProductoCategoria",
+    "group": "Producto",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "nombre",
+            "description": "<p>Categoria of the Product.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "ok",
+            "description": "<p>Result of the query.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "producto",
+            "description": "<p>Products of the system.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "img",
+            "description": "<p>image of the product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>ID of products of the system.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nombre",
+            "description": "<p>Name of products.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "descripcion",
+            "description": "<p>Description of the product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "direccion",
+            "description": "<p>Address of products.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "horario",
+            "description": "<p>Times of the product.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "categoria",
+            "description": "<p>Info from category.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "usuario",
+            "description": "<p>Info of the user.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n  \"ok\": true,\n  \"producto\": {\n        \"img\": true,\n        \"_id\": \"5e78e2e9291a19689a93e9e8\",\n        \"nombre\": \"hostal de javier\",\n        \"descripcion\": \"gran hostal\",\n        \"direccion\": \"C/ test 25\",\n        \"horario\": \"de 8 a 18\",\n        \"telefono\": \"6123456778\",\n        \"categoria\": {\n            \"_id\": \"5e77a95b662f4d75dcc174d6\",\n            \"nombre\": \"dormir\"\n        },\n        \"usuario\": null,\n        \"__v\": 0\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "ProductNotFound",
+            "description": "<p>The products was not found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "    HTTP/1.1 400 Not Found\n    {\n    \"ok\": false,\n    \"err\": {\n        \"message\": \"No hay productos en esta categoria.\"\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "server/routes/producto.js",
+    "groupTitle": "Producto"
+  },
+  {
+    "type": "get",
     "url": "/producto/:id",
     "title": "Request products information by id",
     "name": "GetProductoId",

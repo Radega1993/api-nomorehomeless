@@ -161,7 +161,7 @@ app.get('/producto/buscar/:nombre', (req, res) => {
 });
 
 /**
- * @api {get} /producto/buscar/:categoria Request products information by category
+ * @api {get} /producto/categoria/:categoria Request products information by category
  * @apiName GetProductoCategoria
  * @apiGroup Producto
  *
@@ -210,13 +210,12 @@ app.get('/producto/buscar/:nombre', (req, res) => {
  *     }
  * }
  */
-app.get('/producto/buscar/:categoria', (req, res) => {
+app.get('/producto/categoria/:categoria', (req, res) => {
 
   let categoria = req.params.categoria;
+  console.log(categoria)
 
-  Producto.find({
-      categoria
-    })
+  Producto.find({categoria})
     .populate('usuario', 'nombre apellido email')
     .populate('categoria', 'nombre')
     .exec((err, productos) => {
