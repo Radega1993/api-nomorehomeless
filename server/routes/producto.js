@@ -213,10 +213,9 @@ app.get('/producto/buscar/:nombre', (req, res) => {
 app.get('/producto/buscar/:categoria', (req, res) => {
 
   let categoria = req.params.categoria;
-  let regex = new RegExp(categoria, 'i');
 
   Producto.find({
-      categoria: regex
+      categoria
     })
     .populate('usuario', 'nombre apellido email')
     .populate('categoria', 'nombre')
