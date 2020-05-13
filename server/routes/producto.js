@@ -161,6 +161,89 @@ app.get('/producto/buscar/:nombre', (req, res) => {
 });
 
 /**
+ * @api {get} /producto/buscar/:categoria Request products information by category
+ * @apiName GetProductoCategoria
+ * @apiGroup Producto
+ *
+ * @apiParam {String} nombre Categoria of the Product.
+ *
+ * @apiSuccess {Boolean} ok Result of the query.
+ * @apiSuccess {String} producto Products of the system.
+ * @apiSuccess {Boolean} img image of the product.
+ * @apiSuccess {String} id ID of products of the system.
+ * @apiSuccess {String} nombre Name of products.
+ * @apiSuccess {String} descripcion Description of the product.
+ * @apiSuccess {String} direccion Address of products.
+ * @apiSuccess {String} horario Times of the product.
+ * @apiSuccess {String} categoria Info from category.
+ * @apiSuccess {String} usuario Info of the user.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "ok": true,
+ *       "producto": {
+ *             "img": true,
+ *             "_id": "5e78e2e9291a19689a93e9e8",
+ *             "nombre": "hostal de javier",
+ *             "descripcion": "gran hostal",
+ *             "direccion": "C/ test 25",
+ *             "horario": "de 8 a 18",
+ *             "telefono": "6123456778",
+ *             "categoria": {
+ *                 "_id": "5e77a95b662f4d75dcc174d6",
+ *                 "nombre": "dormir"
+ *             },
+ *             "usuario": null,
+ *             "__v": 0
+ *         }
+ *     }
+ *
+ * @apiError ProductNotFound The products was not found.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 400 Not Found
+ *     {
+ *     "ok": false,
+ *     "err": {
+ *         "message": "No hay productos en esta categoria."
+ *     }
+ * }
+ */
+app.get('/producto/buscar/:categoria', (req, res) => {
+
+  let categoria = req.params.categoria;
+  let regex = new RegExp(categoria, 'i');
+
+  Producto.find({
+      categoria: regex
+    })
+    .populate('usuario', 'nombre apellido email')
+    .populate('categoria', 'nombre')
+    .exec((err, productos) => {
+
+      if (err) {
+        return res.status(500).json({
+          ok: false,
+          err
+        });
+      }
+      if (!productos) {
+        return res.status(400).json({
+          ok: false,
+          err: {
+            message: "No hay productos en esta categoria. "
+          }
+        });
+      }
+      res.json({
+        ok: true,
+        productos
+      });
+    });
+});
+
+/**
  * @api {get} /producto/:id Request products information by id
  * @apiName GetProductoId
  * @apiGroup Producto
