@@ -391,7 +391,8 @@ app.post('/producto',  (req, res) => {
     direccion: body.direccion,
     horario: body.horario,
     telefono: body.telefono,
-    coord: body.coord,
+    lat: body.lat,
+    lng: body.lng,
     observaciones: body.observaciones,
     img: body.img,
     categoria: body.categoria,
@@ -487,7 +488,8 @@ app.put('/producto/:id', (req, res) => {
     direccion: body.direccion,
     horario: body.horario,
     telefono: body.telefono,
-    coord: body.coord,
+    lat: body.lat,
+    lng: body.lng,
     observaciones: body.observaciones
   }
 

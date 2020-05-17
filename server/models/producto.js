@@ -1,18 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-const pointSchema = new Schema({
-  type: {
-    type: String,
-    enum: ['Point'],
-    required: true
-  },
-  coordinates: {
-    type: [Number],
-    required: true
-  }
-});
-
 
 var productoSchema = new Schema({
   nombre: {
@@ -38,8 +26,12 @@ var productoSchema = new Schema({
     maxlength: [15, 'El telefono debe contener menos de 15 caracteres!'],
     required: false
   },
-  coord: {
-    type: pointSchema,
+  lat: {
+    type: Number,
+    required: false
+  },
+  lng: {
+    type: Number,
     required: false
   },
   observaciones: {
