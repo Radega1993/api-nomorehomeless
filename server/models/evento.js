@@ -1,18 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-const pointSchema = new Schema({
-  type: {
-    type: String,
-    enum: ['Point'],
-    required: true
-  },
-  coordinates: {
-    type: [Number],
-    required: true
-  }
-});
-
 
 var eventoSchema = new Schema({
   nombre: {
@@ -28,16 +16,18 @@ var eventoSchema = new Schema({
   direccion: {
     type: String,
     required: false
-    //required: [true, 'La dirección es obligatoria']
   },
-  coord: {
-    type: pointSchema,
+  lat: {
+    type: Number,
+    required: false
+  },
+  lng: {
+    type: Number,
     required: false
   },
   horario: {
     type: String,
     required: false
-    //required: [true, 'El horario es necesario']
   },
   fecha: {
     type: Date,
