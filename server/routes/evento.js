@@ -64,6 +64,44 @@ app.get('/evento', (req, res) => {
     });
 });
 
+app.get('/evento/homeless', (req, res) => {
+
+  Evento.find({"homeless" : true})
+    .sort('fecha')
+    .exec((err, eventos) => {
+      if (err) {
+        return res.status(400).json({
+          ok: false,
+          err
+        });
+      }
+
+      res.json({
+        ok: true,
+        eventos
+      });
+    });
+});
+
+app.get('/evento/nohomeless', (req, res) => {
+
+  Evento.find({"homeless" : false})
+    .sort('fecha')
+    .exec((err, eventos) => {
+      if (err) {
+        return res.status(400).json({
+          ok: false,
+          err
+        });
+      }
+
+      res.json({
+        ok: true,
+        eventos
+      });
+    });
+});
+
 
 /**
  * @api {get} /eventos/buscar/:nombre Request event information by name
