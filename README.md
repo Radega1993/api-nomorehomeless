@@ -168,3 +168,28 @@ describe('Usuario', () => {
 Primer es declara un objecte amb unes dades fictícies, s'elimina tot el que hi hagi anteriorment a la BD de test, s'introdueixen els nous valors i es comprova la seva inserció correcta.
 
 Tota l'API està estructurada d'aquesta mateixa manera seguint les crides POST (afegir), GET (buscar), PUT (modificar), DELETE (eliminar).
+
+## Desplegament
+
+La aplicació esta desplegada a un servidor VPS de un dels integrants del grup.
+S'ha desplegat en un contenidor docker amb el següent Dockerfile.
+
+``` bash
+FROM node:10
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+
+EXPOSE 3005
+CMD [ "node", "server/server.js" ]
+```
+
+I les comandes per arrancar el servei al servidor i estar accessible pel port 80 són les següents:
+``` bash
+docker build -t api-nmh:v1 .
+docker run -p 80:3005 -d -i -t api-nmh:v1
+```
