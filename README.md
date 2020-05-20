@@ -2,7 +2,7 @@
 
 API programada completament amb NodeJS. L'objectiu d'aquesta API és la de realitzar una comunicació entre l'aplicació mòbil, la base de dades i realitzar la part computacional al servidor.
 
-La documentació completa de les crides a l'API es troba ![AQUÍ](https://github.com/Radega1993/api-nomorehomeless/tree/master/apidoc/Api_nmh.pdf)
+La documentació completa de les crides a l'API es troba [AQUÍ](https://github.com/Radega1993/api-nomorehomeless/tree/master/apidoc/Api_nmh.pdf)
 
 ## Motivació
 
