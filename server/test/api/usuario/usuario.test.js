@@ -61,6 +61,7 @@ describe('Usuario', () => {
         email: 'testemail@elmio.com',
         password: '123456',
         passwordVerification: '123456',
+        fecha: "1987-10-19",
         role: "USER_ROLE",
       })
       .then(() => {
