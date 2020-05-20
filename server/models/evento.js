@@ -7,7 +7,7 @@ var eventoSchema = new Schema({
     type: String,
     required: [true, 'El nombre es necesario!'],
     minlength: [2, 'El nombre debe contener al menos 2 caracteres!'],
-    maxlength: [15, 'El nombre debe contener menos de 15 caracteres!']
+    maxlength: [50, 'El nombre debe contener menos de 50 caracteres!']
   },
   descripcion: {
     type: String,
