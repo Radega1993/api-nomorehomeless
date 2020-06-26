@@ -13,9 +13,9 @@ process.env.PORT = process.env.PORT || 3005;
 // Base de Datos
 // ===================================
 if (process.env.NODE_ENV === 'test') {
-  urlDB = 'mongodb+srv://nmh:nmh123456@cluster0-cqs9m.mongodb.net/test';
+  urlDB = 'url/test';
 } else {
-  urlDB = 'mongodb+srv://nmh:nmh123456@cluster0-cqs9m.mongodb.net/nmhbd';
+  urlDB = 'url/nmhbd';
 }
 
 process.env.URLDB = urlDB
